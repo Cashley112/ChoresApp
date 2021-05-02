@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks Index</title>
+</head>
+<body>
+    <h1>All Tasks</h1>
+
+    <ul>
+        <% for (let task of tasks) { %> 
+            <li><%= task.title %> </li>
+        <% } %> 
+    </ul>
+
+    <button>Add a Task</button>
+    <button>Edit a Task</button>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chore Schedule</title>
+</head>
+<body>
+    <h1>Current Chore Assignments</h1>
+    <ul>
+        <% for (let assignment of assignments) { %>
+            <p>
+                <!-- I feel like this is really bad, probably REFACTOR -->
+                <% if (assignment.assignedTasks.length > 0) { %> 
+                <%= assignment.username %> - <%= assignment.assignedTasks[0].title %>
+                <form action="/users/<%= assignment._id %>/tasks/<%= assignment.assignedTasks[0]._id %>?_method=PATCH" method="POST">
+                    <button>Completed</button>
+                </form>
+            <% } %> 
+            </p>
+        <% } %>  
+    </ul>
+</body>
+</html>
