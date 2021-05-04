@@ -15,7 +15,7 @@
                 <h2><%= assignment.username %></h2>
                 <% for (let i = 0; i < assignment.assignedTasks.length; i++) { %> 
                     <h3><%= assignment.assignedTasks[i].title %></h3>
-                    <form id="form" action="/users/<%= assignment._id %>/tasks/<%= assignment.assignedTasks[0]._id %>?_method=PATCH" method="POST">
+                    <form id="form" action="/users/<%= assignment._id %>/tasks/<%= assignment.assignedTasks[i]._id %>?_method=PATCH" method="POST">
                         <button>Completed</button>
                     </form>
                 <% } %> 
