@@ -1,0 +1,12 @@
+h1 {
+    color: indianred;
+}
+
+body {
+    display: flex;
+}
+
+.image {
+    max-height: 25em;
+    margin-left: 5em;
+}
