@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.username %></title>
+</head>
+<body>
+    <h1><%= user.username %> Details</h1>
+    <h2>Outstanding Assignments:</h2>
+    <% if (user.assignedTasks.length > 0) { %> 
+    <ul>
+        <% for (task of user.assignedTasks) { %> 
+            <li><a href="/tasks/<%= task._id %>"><%= task.title %></a></li>
+        <% } %> 
+    </ul>
+    <% } %> 
+    <h2><label for="task">Assign a Task: </label></h2>
+    <select form="assignTask" name="title" id="task" required>
+        <% for (task of tasks) { %> 
+        <option value="<%= task.title %>"><%= task.title %></option>
+        <% } %> 
+    </select>
+    <form id="assignTask" action="/users/<%= user._id %>?_method=PATCH" method="POST">
+        <button>Submit</button>
+    </form>
+    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+        <button>Delete User</button>
+    </form>
+    <form action="/users">
+        <button>Back to users</button>
+    </form>
+</body>
+</html>

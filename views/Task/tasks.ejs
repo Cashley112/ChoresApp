@@ -10,11 +10,14 @@
 
     <ul>
         <% for (let task of tasks) { %> 
-            <li><%= task.title %> </li>
+            <li><a href="/tasks/<%= task._id %>"><%= task.title %></a></li>
         <% } %> 
     </ul>
-
-    <button>Add a Task</button>
-    <button>Edit a Task</button>
+    <form action="/tasks/new" method="GET">
+        <button>Add a Task</button>
+    </form>
+    <form action="/" method="GET">
+        <button>Back to Home</button>
+    </form>
 </body>
 </html>

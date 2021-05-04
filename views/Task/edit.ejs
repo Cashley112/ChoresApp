@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= task.title %></title>
+</head>
+<body>
+    <h1>Edit <%= task.title %></h1>
+
+    <form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
+        <div>
+            <label for="title">Title: </label>
+            <input id="title" type="text" name="task[title]" placeholder="<%= task.title %> " required>
+        </div>
+        <label for="frequency">How Many Times per Month?</label>
+        <div>
+            <input id="frequency" type="range" name="task[frequency]" min="1" max="4" value="<%= task.frequency %>" required>
+        </div>
+        <label for="description">Description:</label>
+        <div>
+            <textarea name="task[description]" id="" cols="30" rows="3" required><%= task.description %></textarea>
+        </div>
+
+        <button>Submit</button>
+    </form>
+
+</body>
+</html>
