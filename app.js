@@ -51,9 +51,9 @@ app.get('/users/:id', async (req, res) => {
     res.render('User/show', { user, tasks });
 })
 app.patch('/users/:id', async (req, res) => {
-    const { id, taskId } = req.params;
+    const { id } = req.params;
     const user = await User.findById(id);
-    const task = await Task.findOne(req.body);
+    const task = await Task.findOne(req.body.task);
     user.assignedTasks.push(task);
     await user.save();
     res.redirect(`/users/${ user._id }`)

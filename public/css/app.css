@@ -63,5 +63,23 @@ h3.target-acquired {
     color: #b5838d;
 }
 
+div.scoreCard {
+    background-color: #6d6875;
+    border-color: #e5989b;
+    color: #e5989b;
+}
+
+div.scoreCard a.red-outline {
+    background-color: #6d6875;
+    border-color: #e5989b;
+    color: #e5989b;
+}
+
+div.scoreCard a.red-outline:hover {
+    background-color: #e5989b;
+    border-color: #e5989b;
+    color: #6d6875;
+}
+
 
 

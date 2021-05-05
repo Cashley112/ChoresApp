@@ -1,19 +1,24 @@
 <% layout('layouts/boilerplate') %> 
-<div class="main container">
+<div class="main container mb-3">
     <h1 class="title">Chores App Home</h1>
     <h2>Welcome</h2>
 </div>
 
-<h2>Current Rankings:</h2>
+<div class="container mb-3">
+    <h2 class="display2">Current Rankings:</h2>
+</div>
 
 <div class="row">
     <% for (user of users) { %>
-        <div class="col">
-            <h2><%= user.username %> </h2>
-            <h3><%= user.choreScore %> </p>
-        </div>
+        <div class="col-md">
+            <div class="card scoreCard">
+              <div class="card-body">
+                <h5 class="card-title"><%= user.username %> </h5>
+                <p class="card-text"><%= user.choreScore %> </p>
+                <a href="/users/<%= user._id %> " class="btn red-outline">View Profile</a>
+              </div>
+            </div>
+          </div>
     <% } %>  
-</div>
-
-
+  </div>
 
