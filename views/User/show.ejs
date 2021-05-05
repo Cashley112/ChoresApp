@@ -2,13 +2,17 @@
 <div class="row mb-3">
     <div class="col-6 offset-3">
         <h1 class="display1"><%= user.username %> Details</h1>
+        <h2 class="display2">choreScore: </h2>
+        <h3 class="display3"><%= user.choreScore %> </h3>
         <h2 class="display2">Outstanding Assignments:</h2>
         <% if (user.assignedTasks.length > 0) { %> 
             <% for (task of user.assignedTasks) { %> 
                 <button class="btn red-outline">
                     <a href="/tasks/<%= task._id %>"><%= task.title %></a>
                 </button>
-            <% } %> 
+            <% } %>
+        <% } else {%>
+            <p>No Tasks Available</p>
         <% } %> 
     </div>
 </div>

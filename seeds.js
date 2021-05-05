@@ -25,17 +25,20 @@ const seedDbUsers = async () => {
         {
             username: 'Cashley112',
             password: 'blue',
-            email: 'azul@gmail.com'
+            email: 'azul@gmail.com',
+            choreScore: 0
         },
         {
             username: 'ItallianStallion',
             password: 'red',
-            email: 'rojo@gmail.com'
+            email: 'rojo@gmail.com',
+            choreScore: 0
         },
         {
             username: 'DonCheadlesSon',
             password: 'green',
-            email: 'verde@gmail.com'
+            email: 'verde@gmail.com',
+            choreScore: 0
         }
     ])
     // await newUser.save()

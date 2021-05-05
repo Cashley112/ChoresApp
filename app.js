@@ -28,8 +28,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-app.get('/', (req, res) => {
-    res.render('home');
+app.get('/', async (req, res) => {
+    const users = await User.find({});
+    res.render('home', { users });
 })
 app.get('/users', async (req, res) => {
     const users = await User.find({})
@@ -100,10 +101,11 @@ app.get('/schedule', async (req, res) => {
     const assignments = await User.find({}).populate('assignedTasks');
     res.render('schedule', { assignments });
 })
+
 // Complete task route
 app.patch('/users/:id/tasks/:taskId', async (req, res) => {
     const { id, taskId } = req.params;
-    const updatedTask = await User.findByIdAndUpdate(id, { $pull: { assignedTasks: taskId } });
+    const updatedTask = await User.findByIdAndUpdate(id, { $pull: { assignedTasks: taskId }, $inc : { choreScore: 1 } });
     res.redirect('/schedule')
 })
 
