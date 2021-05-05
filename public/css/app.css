@@ -22,7 +22,7 @@ button.cream-fill {
 button.cream-fill:hover {
     /* background-color: #6d6875; */
     background-color: #6d6875;
-    /* border-color: #ffb4a2;*/
+    border-color: #ffb4a2;
     color: #ffb4a2;
 }
 
@@ -57,6 +57,10 @@ button.red-outline:hover {
     background-color: #e5989b;
     border-color: #e5989b;
     color: #6d6875;
+}
+
+h3.target-acquired {
+    color: #b5838d;
 }
 
 

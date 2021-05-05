@@ -1,28 +1,46 @@
-<!DOCTYPE html>
 <% layout('layouts/boilerplate') %> 
-    <h1><%= user.username %> Details</h1>
-    <h2>Outstanding Assignments:</h2>
-    <% if (user.assignedTasks.length > 0) { %> 
-    <ul>
-        <% for (task of user.assignedTasks) { %> 
-            <li><a href="/tasks/<%= task._id %>"><%= task.title %></a></li>
+<div class="row mb-3">
+    <div class="col-6 offset-3">
+        <h1 class="display1"><%= user.username %> Details</h1>
+        <h2 class="display2">Outstanding Assignments:</h2>
+        <% if (user.assignedTasks.length > 0) { %> 
+            <% for (task of user.assignedTasks) { %> 
+                <button class="btn red-outline">
+                    <a href="/tasks/<%= task._id %>"><%= task.title %></a>
+                </button>
+            <% } %> 
         <% } %> 
-    </ul>
-    <% } %> 
-    <h2><label for="task">Assign a Task: </label></h2>
-    <select class="mb-3" form="assignTask" name="title" id="task" required>
-        <% for (task of tasks) { %> 
-        <option value="<%= task.title %>"><%= task.title %></option>
-        <% } %> 
-    </select>
-    <form id="assignTask" action="/users/<%= user._id %>?_method=PATCH" method="POST">
-        <button class="btn cream-fill">Submit</button>
-    </form>
-    <h2>Email:</h2>
-    <p><%= user.email %></p>
-    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-        <button class="btn cream-fill mb-3">Delete User</button>
-    </form>
-    <form action="/users">
-        <button class="btn yellow-hearth">Back to users</button>
-    </form>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-6 offset-3">
+        <h2><label for="task">Assign a Task: </label></h2>
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <% for (task of tasks) { %> 
+                <option value="<%= task.title %>"><%= task.title %></option>
+            <% } %> 
+        </select>
+    </div>
+</div>
+<form id="assignTask" action="/users/<%= user._id %>?_method=PATCH" method="POST">
+    <button class="btn cream-fill mb-3">Submit</button>
+</form>
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <h2>Email:</h2>
+        <p><%= user.email %></p>
+        <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+            <button class="btn cream-fill mb-3">Delete User</button>
+        </form>
+        <form action="/users">
+            <button class="btn yellow-hearth">Back to users</button>
+        </form>
+    </div>
+</div>
+
+
+
+    
+    

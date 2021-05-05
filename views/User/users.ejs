@@ -1,19 +1,29 @@
 <% layout('layouts/boilerplate') %> 
-<body>
-    <h1>All Users</h1>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h1>All Users</h1>
     
-    <% for (let user of users) { %>
-        <div id="buttonHoverText" class="container">
-            <button class="btn red-outline mb-3">
-                <a href="/users/<%= user._id %>"><%= user.username %></a>
-            </button>
+            <% for (let user of users) { %>
+                <div id="buttonHoverText" class="container">
+                    <button class="btn red-outline mb-3">
+                        <a href="/users/<%= user._id %>"><%= user.username %></a>
+                    </button>
+                </div>
+            <% } %> 
         </div>
-    <% } %> 
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form action="/users/new">
+                <button class="btn cream-fill mb-3">Create a New User</button>
+            </form>
+            <form action="/">
+                <button class="btn yellow-hearth">Back to Home</button>
+            </form>
+        </div>
+    </div>
     
-    <form action="/users/new">
-        <button class="btn cream-fill mb-3">Create a New User</button>
-    </form>
-    <form action="/">
-        <button class="btn yellow-hearth">Back to Home</button>
-    </form>
+    
+    
+    
 
