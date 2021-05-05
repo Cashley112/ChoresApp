@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= user.username %></title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %> 
     <h1><%= user.username %> Details</h1>
     <h2>Outstanding Assignments:</h2>
     <% if (user.assignedTasks.length > 0) { %> 
@@ -16,19 +10,19 @@
     </ul>
     <% } %> 
     <h2><label for="task">Assign a Task: </label></h2>
-    <select form="assignTask" name="title" id="task" required>
+    <select class="mb-3" form="assignTask" name="title" id="task" required>
         <% for (task of tasks) { %> 
         <option value="<%= task.title %>"><%= task.title %></option>
         <% } %> 
     </select>
     <form id="assignTask" action="/users/<%= user._id %>?_method=PATCH" method="POST">
-        <button>Submit</button>
+        <button class="btn cream-fill">Submit</button>
     </form>
+    <h2>Email:</h2>
+    <p><%= user.email %></p>
     <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-        <button>Delete User</button>
+        <button class="btn cream-fill mb-3">Delete User</button>
     </form>
     <form action="/users">
-        <button>Back to users</button>
+        <button class="btn yellow-hearth">Back to users</button>
     </form>
-</body>
-</html>

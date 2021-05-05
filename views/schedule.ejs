@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chore Schedule</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %> 
     <h1>Current Chore Assignments</h1>
     <ul>
         <% for (let assignment of assignments) { %>
@@ -16,7 +9,7 @@
                 <% for (let i = 0; i < assignment.assignedTasks.length; i++) { %> 
                     <h3><%= assignment.assignedTasks[i].title %></h3>
                     <form id="form" action="/users/<%= assignment._id %>/tasks/<%= assignment.assignedTasks[i]._id %>?_method=PATCH" method="POST">
-                        <button>Completed</button>
+                        <button class="btn btn-secondary red-outline">Completed</button>
                     </form>
                 <% } %> 
             <% } %> 
@@ -24,7 +17,5 @@
         <% } %>  
     </ul>
     <form action="/">
-        <button>Back to Home</button>
+        <button class="btn yellow-hearth">Back to Home</button>
     </form>
-</body>
-</html>

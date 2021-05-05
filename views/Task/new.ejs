@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a Task</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %> 
     <h1>Add a Task</h1>
 
     <form action="/tasks" method="POST">
@@ -22,8 +15,6 @@
             <textarea name="task[description]" id="" cols="30" rows="3" required>Instructions and Notes...</textarea>
         </div>
 
-        <button>Submit</button>
+        <button class="btn cream-fill">Submit</button>
     </form>
 
-</body>
-</html>

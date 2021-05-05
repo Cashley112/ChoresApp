@@ -23,13 +23,19 @@ const seedDbUsers = async () => {
     // })
     await User.insertMany([
         {
-            username: 'Cashley112'
+            username: 'Cashley112',
+            password: 'blue',
+            email: 'azul@gmail.com'
         },
         {
-            username: 'ItallianStallion'
+            username: 'ItallianStallion',
+            password: 'red',
+            email: 'rojo@gmail.com'
         },
         {
-            username: 'DonCheadlesSon'
+            username: 'DonCheadlesSon',
+            password: 'green',
+            email: 'verde@gmail.com'
         }
     ])
     // await newUser.save()
@@ -41,13 +47,16 @@ seedDbTasks = async () => {
     await Task.deleteMany({});
     await Task.insertMany([
         {
-            title: 'Clean Kitchen'
+            title: 'Clean Kitchen',
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, voluptates? Illo non amet quasi, excepturi quia nihil vero ullam illum beatae laboriosam explicabo eveniet autem quo quibusdam maiores inventore reiciendis."
         },
         {
-            title: 'Take Out Trash'
+            title: 'Take Out Trash',
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, voluptates? Illo non amet quasi, excepturi quia nihil vero ullam illum beatae laboriosam explicabo eveniet autem quo quibusdam maiores inventore reiciendis."
         },
         {
-            title: 'Mow Lawn'
+            title: 'Mow Lawn',
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, voluptates? Illo non amet quasi, excepturi quia nihil vero ullam illum beatae laboriosam explicabo eveniet autem quo quibusdam maiores inventore reiciendis."
         }
     ])
 };

@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks Index</title>
-</head>
+<% layout('layouts/boilerplate') %> 
 <body>
     <h1>All Tasks</h1>
 
-    <ul>
+    
         <% for (let task of tasks) { %> 
-            <li><a href="/tasks/<%= task._id %>"><%= task.title %></a></li>
+            <div class="container">
+                <button class="btn red-outline mb-3">
+                    <a class="link-danger" href="/tasks/<%= task._id %>"><%= task.title %></a>
+                </button>
+            </div>
         <% } %> 
-    </ul>
+    
     <form action="/tasks/new" method="GET">
-        <button>Add a Task</button>
+        <button class="btn cream-fill mb-3">Add a Task</button>
     </form>
+
     <form action="/" method="GET">
-        <button>Back to Home</button>
+        <button class="btn yellow-hearth">Back to Home</button>
     </form>
-</body>
-</html>
+
+   

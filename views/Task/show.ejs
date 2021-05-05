@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= task.title %></title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %> 
     <h1><%= task.title %></h1>
     <h2>How Many Times per Month?</h2>
     <p><%= task.frequency %></p>
     <h2>Description: </h2>
     <p><%= task.description %></p>
     <form action="/tasks/<%= task._id %>/edit">
-        <button>Edit Task</button>
+        <button class="btn cream-fill mb-3">Edit Task</button>
     </form>
     <form action="/tasks">
-        <button>Back to Tasks</button>
+        <button class="btn cream-fill mb-3">Back to Tasks</button>
     </form>
     <form action="/tasks/<%= task._id %>?_method=DELETE" method="POST">
-        <button>Delete Task</button>
+        <button class="btn yellow-hearth">Delete Task</button>
     </form>
-    
-</body>
-</html>

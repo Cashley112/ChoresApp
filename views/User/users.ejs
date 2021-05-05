@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users Index</title>
-</head>
+<% layout('layouts/boilerplate') %> 
 <body>
     <h1>All Users</h1>
-    <ul>
-        <% for (let user of users) { %>
-            <li><a href="/users/<%= user._id %>"><%= user.username %></a></li>
-        <% } %> 
-    </ul>
+    
+    <% for (let user of users) { %>
+        <div id="buttonHoverText" class="container">
+            <button class="btn red-outline mb-3">
+                <a href="/users/<%= user._id %>"><%= user.username %></a>
+            </button>
+        </div>
+    <% } %> 
+    
     <form action="/users/new">
-        <button>Create a New User</button>
+        <button class="btn cream-fill mb-3">Create a New User</button>
     </form>
     <form action="/">
-        <button>Back to Home</button>
+        <button class="btn yellow-hearth">Back to Home</button>
     </form>
-</body>
-</html>
+
