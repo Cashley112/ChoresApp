@@ -11,7 +11,12 @@ const TaskSchema = new Schema({
     frequency: {
         type: Number,
         enum: [1,2,3,4]
-    }
+    },
+    category: {
+        type: [String],
+        enum: ['indoor', 'outdoor', 'utility', 'money', 'other']
+    },
+    symbol: String
 });
 
 module.exports = mongoose.model('Task', TaskSchema);

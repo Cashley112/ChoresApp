@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %> 
     <h1>Add a Task</h1>
 
-    <form action="/tasks" method="POST">
+    <form id="newTask" action="/tasks" method="POST" novalidate class="validated-form">
         <div>
             <label for="title">Title: </label>
             <input id="title" type="text" name="task[title]" required>
@@ -10,6 +10,13 @@
         <div>
             <input id="frequency" type="range" name="task[frequency]" min="1" max="4" required>
         </div>
+        <label for="category">Pick a Category: </label>
+        <select form="newTask" id="category">
+            <!-- refactor to just hard code categories... -->
+            <% for (task of tasks) { %>
+                <option name="task[category]" value="<%= task.category %>"><%= task.category %></option>
+            <% } %>  
+        </select>
         <label for="description">Description:</label>
         <div>
             <textarea name="task[description]" id="" cols="30" rows="3" required>Instructions and Notes...</textarea>

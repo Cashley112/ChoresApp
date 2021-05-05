@@ -1,29 +1,36 @@
 <% layout('layouts/boilerplate') %> 
-    <div class="row">
-        <div class="col-6 offset-3">
+    <div class="row mb-3">
+        
             <h1>All Users</h1>
     
             <% for (let user of users) { %>
-                <div id="buttonHoverText" class="container">
-                    <button class="btn red-outline mb-3">
-                        <a href="/users/<%= user._id %>"><%= user.username %></a>
-                    </button>
+                <div class="col-md d-flex justify-content-center">
+                    <div class="card scoreCard" style="width: 18rem;">
+                        <img src="<%= user.profilePicture %>" class="card-img-top" style="height: 24rem;" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= user.username %></h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="/users/<%= user._id %>" class="btn red-outline">View Profile</a>
+                        </div>
+                      </div>
                 </div>
+                
             <% } %> 
-        </div>
+        
     </div>
+
     <div class="row">
         <div class="col-6 offset-3">
             <form action="/users/new">
                 <button class="btn cream-fill mb-3">Create a New User</button>
             </form>
             <form action="/">
-                <button class="btn yellow-hearth">Back to Home</button>
+                <button class="btn yellow-hearth mb-3">Back to Home</button>
             </form>
         </div>
     </div>
     
-    
+   
     
     
 

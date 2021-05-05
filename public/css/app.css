@@ -81,5 +81,45 @@ div.scoreCard a.red-outline:hover {
     color: #6d6875;
 }
 
+#choreButton {
+    height: 10rem;
+    width: 10rem;
+    border-color: #e5989b;
+    border-style: solid;
+    border-width: .2ch;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #e5989b;
+}
+#choreButton:hover {
+    height: 10rem;
+    width: 10rem;
+    border-color: #e5989b;
+    background-color: #e5989b;
+    border-style: solid;
+    border-width: .2ch;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #6d6875;
+}
 
+div#choreButtonTitle {
+    margin-bottom: auto;
+    margin-top: 1rem;
+    
+}
+div#choreButtonIcon {
+    margin-bottom: 2.5rem;
+}
 
+div.home {
+    color: #ffb4a2;
+}
+
+h2#ranking {
+    color: #ffcdb2
+}

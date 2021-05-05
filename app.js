@@ -72,9 +72,10 @@ app.get('/tasks', catchAsync(async (req, res) => {
     const tasks = await Task.find({});
     res.render('Task/tasks', { tasks });
 }));
-app.get('/tasks/new', (req, res) => {
-    res.render('Task/new');
-})
+app.get('/tasks/new', catchAsync(async (req, res) => {
+    const tasks = await Task.find({});
+    res.render('Task/new', { tasks });
+}));
 app.post('/tasks', catchAsync(async (req, res) => {
     task = new Task(req.body.task);
     await task.save();
