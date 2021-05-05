@@ -18,7 +18,11 @@ const UserSchema = new Schema({
     assignedTasks: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Task"
+            ref: "Task",
+            assignedAt: {
+                type: Date,
+                default: Date.now()
+            }
         }
     ],
     choreScore: {

@@ -1,6 +1,6 @@
 
 .navbar {
-    background-color: #b5838d;
+    background-color: #59848d;
     color: whitesmoke;
 }
 
@@ -9,33 +9,39 @@ body {
     text-align: center;
     text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
     color: whitesmoke;
-    background-color: #6d6875;
+    background-color: #879171;
     background-size: contain;
 }
 
 button.cream-fill {
     /* background-color: #6d6875; */
-    background-color: #ffb4a2;
-    border-color: #ffb4a2;
-    color: #6d6875;
+    background-color: #f6bd60;
+    border-color: #f6bd60;
+    color: #879171;
 }
 button.cream-fill:hover {
     /* background-color: #6d6875; */
-    background-color: #6d6875;
-    border-color: #ffb4a2;
-    color: #ffb4a2;
+    background-color: #59848d;
+    border-color: #59848d;
+    color: #f6bd60;
 }
 
 button.yellow-hearth {
     /* background-color: #6d6875; */
-    background-color: #ffcdb2;
+    /* background-color: #ffcdb2;
     border-color: #ffcdb2;
-    color: #6d6875;
+    color: #6d6875; */
+    background-color: #f6bd60;
+    border-color: #f6bd60;
+    color: #879171;
 }
 button.yellow-hearth:hover {
-    background-color: #6d6875;
+    /* background-color: #6d6875;
     border-color: #ffcdb2; 
-    color: #ffcdb2;
+    color: #ffcdb2; */
+    background-color: #59848d;
+    border-color: #59848d;
+    color: #f6bd60;
 }
 
 button.red-outline {
@@ -84,27 +90,27 @@ div.scoreCard a.red-outline:hover {
 #choreButton {
     height: 10rem;
     width: 10rem;
-    border-color: #e5989b;
+    border-color: white;
     border-style: solid;
     border-width: .2ch;
     border-radius: 5%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: #e5989b;
+    color: white;
 }
 #choreButton:hover {
     height: 10rem;
     width: 10rem;
-    border-color: #e5989b;
-    background-color: #e5989b;
+    border-color: white;
+    background-color: white;
     border-style: solid;
     border-width: .2ch;
     border-radius: 5%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: #6d6875;
+    color: #879171;
 }
 
 div#choreButtonTitle {
