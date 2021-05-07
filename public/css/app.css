@@ -117,3 +117,8 @@ div#choreButtonTitle {
 div#choreButtonIcon {
     margin-bottom: 2.5rem;
 }
+
+div#stickyBottom {
+    position: fixed;
+    bottom: 0;
+}
