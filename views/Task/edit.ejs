@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %> 
     <h1>Edit <%= task.title %></h1>
 
-    <form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
+    <form id="newTask" action="/tasks/<%= task._id %>?_method=PUT" method="POST">
         <div>
             <label for="title">Title: </label>
             <input id="title" type="text" name="task[title]" placeholder="<%= task.title %> " required>
@@ -10,6 +10,13 @@
         <div>
             <input id="frequency" type="range" name="task[frequency]" min="1" max="4" value="<%= task.frequency %>" required>
         </div>
+        <label for="category">Pick a Category: </label>
+        <select form="newTask" id="category">
+            <!-- refactor to just hard code categories... -->
+            <% for (task of tasks) { %>
+                <option name="task[category]" value="<%= task.category %>"><%= task.category %></option>
+            <% } %>  
+        </select>
         <label for="description">Description:</label>
         <div>
             <textarea name="task[description]" id="" cols="30" rows="3" required><%= task.description %></textarea>

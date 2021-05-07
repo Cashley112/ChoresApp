@@ -17,13 +17,13 @@ button.cream-fill {
     /* background-color: #6d6875; */
     background-color: #f6bd60;
     border-color: #f6bd60;
-    color: #879171;
+    color: white;
 }
 button.cream-fill:hover {
     /* background-color: #6d6875; */
     background-color: #59848d;
     border-color: #59848d;
-    color: #f6bd60;
+    color: white;
 }
 
 button.yellow-hearth {
@@ -33,7 +33,7 @@ button.yellow-hearth {
     color: #6d6875; */
     background-color: #f6bd60;
     border-color: #f6bd60;
-    color: #879171;
+    color: white;
 }
 button.yellow-hearth:hover {
     /* background-color: #6d6875;
@@ -41,7 +41,7 @@ button.yellow-hearth:hover {
     color: #ffcdb2; */
     background-color: #59848d;
     border-color: #59848d;
-    color: #f6bd60;
+    color: white;
 }
 
 button.red-outline {
@@ -65,31 +65,27 @@ button.red-outline:hover {
     color: #6d6875;
 }
 
-h3.target-acquired {
-    color: #b5838d;
-}
-
 div.scoreCard {
-    background-color: #6d6875;
-    border-color: #e5989b;
-    color: #e5989b;
+    background-color: #879171;
+    border-color: white;
+    color: white;
 }
 
 div.scoreCard a.red-outline {
-    background-color: #6d6875;
-    border-color: #e5989b;
-    color: #e5989b;
+    background-color: #f6bd60;
+    border-color: #f6bd60;
+    color: white;
 }
 
 div.scoreCard a.red-outline:hover {
-    background-color: #e5989b;
-    border-color: #e5989b;
-    color: #6d6875;
+    background-color: #59848d;
+    border-color: #59848d;
+    color: white;
 }
 
 #choreButton {
-    height: 10rem;
-    width: 10rem;
+    height: 15rem;
+    width: 15rem;
     border-color: white;
     border-style: solid;
     border-width: .2ch;
@@ -100,10 +96,10 @@ div.scoreCard a.red-outline:hover {
     color: white;
 }
 #choreButton:hover {
-    height: 10rem;
-    width: 10rem;
-    border-color: white;
-    background-color: white;
+    height: 15rem;
+    width: 15rem;
+    border-color: #59848d;
+    background-color: #59848d;
     border-style: solid;
     border-width: .2ch;
     border-radius: 5%;
@@ -120,12 +116,4 @@ div#choreButtonTitle {
 }
 div#choreButtonIcon {
     margin-bottom: 2.5rem;
-}
-
-div.home {
-    color: #ffb4a2;
-}
-
-h2#ranking {
-    color: #ffcdb2
 }

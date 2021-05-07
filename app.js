@@ -88,8 +88,9 @@ app.get('/tasks/:id', catchAsync(async (req, res) => {
 }));
 app.get('/tasks/:id/edit', catchAsync(async (req, res) => {
     const { id } = req.params;
+    const tasks = await Task.find({});
     const task = await Task.findById(id);
-    res.render('Task/edit', { task });
+    res.render('Task/edit', { task, tasks });
 }));
 app.put('/tasks/:id', catchAsync(async (req, res) => {
     const { id } = req.params;
