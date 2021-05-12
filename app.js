@@ -5,10 +5,11 @@ const ejsMate = require('ejs-mate');
 const path = require('path');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
 
-const Task = require('./models/tasks')
-const User = require('./models/users')
+const Task = require('./models/tasks');
+const User = require('./models/users');
+const Assignment = require('./models/assignments');
 
 mongoose.connect('mongodb://localhost:27017/chores-app', {
     useNewUrlParser: true,
@@ -53,12 +54,19 @@ app.get('/users/:id', catchAsync(async (req, res) => {
     res.render('User/show', { user, tasks });
 }));
 
+// assign task to user route
 app.patch('/users/:id', catchAsync(async (req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
     const task = await Task.findOne(req.body.task);
     user.assignedTasks.push(task);
     await user.save();
+    const assignment = new Assignment({
+        username: user,
+        task: task
+    });
+    await assignment.save();
+    console.log(assignment);
     res.redirect(`/users/${ user._id }`)
 }));
 
@@ -104,14 +112,27 @@ app.delete('/tasks/:id', catchAsync(async (req, res) => {
 }));
 
 app.get('/schedule', catchAsync(async (req, res) => {
-    const assignments = await User.find({}).populate('assignedTasks');
-    res.render('schedule', { assignments });
+    const assignments = await Assignment.find({}).populate('username').populate('task');
+    const usersArray = [];
+    for (let i = 0; i < assignments.length; i++) {
+        let dict = {};
+        dict['username'] = assignments[i].username[0].username;
+        dict['user_id'] = assignments[i].username[0]._id
+        dict['task'] = assignments[i].task[0].title;
+        dict['task_id'] = assignments[i].task[0]._id;
+        dict['time'] = String(assignments[i].assignedAt);
+        dict['assignment_id'] = assignments[i]._id;
+        usersArray.push(dict);
+    }
+    console.log(usersArray[0]);
+    res.render('schedule', { usersArray });
 }));
 
 // Complete task route
-app.patch('/users/:id/tasks/:taskId', catchAsync(async (req, res) => {
-    const { id, taskId } = req.params;
+app.patch('/users/:id/tasks/:taskId/assignments/:assignmentId', catchAsync(async (req, res) => {
+    const { id, taskId, assignmentId } = req.params;
     const updatedUser = await User.findByIdAndUpdate(id, { $pull: { assignedTasks: taskId }, $push: { choreHistory: taskId }, $inc : { choreScore: 1 } });
+    await Assignment.findByIdAndDelete(assignmentId);
     res.redirect('/schedule')
 }));
 

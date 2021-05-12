@@ -138,3 +138,7 @@ div.input-group span {
 .wrapper {
     overflow-x: auto;
 }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    color: white;
+  }

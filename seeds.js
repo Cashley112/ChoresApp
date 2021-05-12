@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = require('./models/users')
 const Task = require('./models/tasks');
+const Assignment = require('./models/assignments');
 
 mongoose.connect('mongodb://localhost:27017/chores-app', {
     useNewUrlParser: true,
@@ -87,6 +88,7 @@ seedDbMatch = async () => {
 }
 
 seedDbTotal = async () => {
+    await Assignment.deleteMany({});
     await seedDbUsers();
     await seedDbTasks();
     await seedDbMatch();

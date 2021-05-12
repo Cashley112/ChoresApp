@@ -4,33 +4,37 @@
 </div>
 <!-- TODO: turn assignments into check boxes with an update button to send the form -->
 <div class="wrapper">
-<table class="table table-responsive text-white">
+<table class="table table-responsive table-hover table-bordered text-white">
     <!-- <thead>
         <th scope="col">Name</th>
         <th scope="col">Assignments</th>
     </thead> -->
+     
     <tbody>
-        <% for (let assignment of assignments) { %>
+        <% for (let i = 0; i < usersArray.length; i++) { %>
             <tr class="mb-3">
-                <% if (assignment.assignedTasks.length > 0) { %>
-                    <td><%= assignment.username %></td>
-        
-                    <% for (let i = 0; i < assignment.assignedTasks.length; i++) { %>
-                        <td>
-                            <%= assignment.assignedTasks[i].title %>
-                            <form id="form" action="/users/<%= assignment._id %>/tasks/<%= assignment.assignedTasks[i]._id %>?_method=PATCH" method="POST">
-                                <button class="btn btn-secondary cream-fill">Completed</button>
-                            </form>
-                        </td> 
-                    <% } %> 
-                <% } %> 
+                    <td>
+                        <%= usersArray[i].username %>
+                    </td>
+                    <td>
+                        <%= usersArray[i].time.substring(0,15) %>
+                    </td>
+                    <td>
+                        <%= usersArray[i].task %>
+                    </td>
+                    <td>
+                        <form id="form" action="/users/<%= usersArray[i].user_id %>/tasks/<%= usersArray[i].task_id %>/assignments/<%= usersArray[i].assignment_id %>?_method=PATCH" method="POST">
+                            <button class="btn btn-secondary cream-fill">Completed</button>
+                        </form> 
+                    </td>  
             </tr>
         <% } %> 
-    </tbody> 
+    </tbody>
+
 </table>
 </div>
 
-        
+
 
     <!-- <div class="row">
         <div class="col-6 offset-3">
