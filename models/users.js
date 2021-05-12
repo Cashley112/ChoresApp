@@ -15,6 +15,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    profilePicture: {
+        type: String,
+        required: true
+    },
     assignedTasks: [
         {
             type: Schema.Types.ObjectId,
@@ -29,10 +33,13 @@ const UserSchema = new Schema({
         type: Number,
         default: 0
     },
-    profilePicture: {
-        type: String,
-        required: true
-    }
+    choreHistory: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Task"
+        }
+    ]
+
 })
 
 module.exports = mongoose.model('User', UserSchema);

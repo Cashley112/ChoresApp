@@ -19,6 +19,10 @@ button.cream-fill {
     border-color: #f6bd60;
     color: white;
 }
+button.cream-fill a {
+    color: white;
+    text-decoration: none;
+}
 button.cream-fill:hover {
     /* background-color: #6d6875; */
     background-color: #59848d;
@@ -121,4 +125,16 @@ div#choreButtonIcon {
 div#stickyBottom {
     position: fixed;
     bottom: 0;
+}
+
+div.input-group span {
+    color: #59848d;
+}
+
+.table tr>td {
+    vertical-align: bottom;
+    border-bottom: none;
+    }
+.wrapper {
+    overflow-x: auto;
 }

@@ -27,21 +27,21 @@ const seedDbUsers = async () => {
             password: 'blue',
             email: 'azul@gmail.com',
             choreScore: 0,
-            profilePicture: 'https://images.unsplash.com/photo-1611774119019-461b5dbd3ae8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80'
+            profilePicture: 'https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg'
         },
         {
             username: 'ItallianStallion',
             password: 'red',
             email: 'rojo@gmail.com',
             choreScore: 0,
-            profilePicture: 'https://images.unsplash.com/photo-1605993439219-9d09d2020fa5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
+            profilePicture: 'https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg'
         },
         {
             username: 'DonCheadlesSon',
             password: 'green',
             email: 'verde@gmail.com',
             choreScore: 0,
-            profilePicture: 'https://images.unsplash.com/photo-1512146587460-f94274cc6b9f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
+            profilePicture: 'https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg'
         }
     ])
     // await newUser.save()

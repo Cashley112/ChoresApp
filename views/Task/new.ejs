@@ -2,9 +2,9 @@
     <h1>Add a Task</h1>
 
     <form id="newTask" action="/tasks" method="POST" novalidate class="validated-form">
-        <div>
-            <label for="title">Title: </label>
-            <input id="title" type="text" name="task[title]" required>
+        <label class="form-label" for="title">Title: </label>
+        <div class="input-group">
+            <input class="input-group-text" id="title" type="text" name="task[title]" required>
         </div>
         <label for="frequency">How Many Times per Month?</label>
         <div>

@@ -1,51 +1,56 @@
 <% layout('layouts/boilerplate') %> 
     <div class="row mb-3">
-    <h1 class="display1"><%= user.username %> Details</h1>
-    <div class="container d-flex justify-content-center">
-        
-        <div class="card" style="width: 18rem; border-radius: 50%;">
-            <img style="height: 15rem; border-radius: 50%;" src="<%= user.profilePicture %> " class="card-img-top" alt="...">
-          </div>
-    </div>
-        
-    <div class="container mb-3">
-        <h2 class="display2">choreScore: </h2>
-        <h3 class="display3"><%= user.choreScore %> </h3>
-        <h2 class="display2">Outstanding Assignments:</h2>
-        <% if (user.assignedTasks.length > 0) { %> 
-            <% for (task of user.assignedTasks) { %> 
-                <button class="btn red-outline">
-                    <a href="/tasks/<%= task._id %>"><%= task.title %></a>
-                </button>
-            <% } %>
-        <% } else {%>
-            <p>No Tasks Available</p>
-        <% } %> 
-    </div>
+        <div class="col-md">
+            <h1 class="display1"><%= user.username %> Details</h1>
+            <div class="container d-flex justify-content-center mb-3">
+                
+                <div class="card" style="width: 18rem; border-radius: 50%;">
+                    <img style="height: 15rem; border-radius: 50%;" src="<%= user.profilePicture %> " class="card-img-top" alt="...">
+                </div>
+            </div>
+                
+            <div class="container mb-3">
+                <h2 class="display2">choreScore: </h2>
+                <h3 class="display3"><%= user.choreScore %> </h3> 
+                <h2>Email:</h2>
+                    <p><%= user.email %></p>
+            </div>
+        </div>
 
-    <h2><label for="task">Assign a Task: </label></h2>
-    <div class="container d-flex justify-content-center mb-3">
-        <select name="task[title]" form="assignTask" style="width: 15rem" class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <% for (task of tasks) { %> 
-                <option value="<%= task.title %>"><%= task.title %></option>
-            <% } %> 
-        </select>
-    </div>
-    <form id="assignTask" action="/users/<%= user._id %>?_method=PATCH" method="POST">
-        <button class="btn cream-fill mb-3">Submit</button>
-    </form>
-    
-    <div class="container">
-        <h2>Email:</h2>
-            <p><%= user.email %></p>
-            <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
-                <button class="btn cream-fill mb-3">Delete User</button>
+        <div class="col-md">
+            <div class="container mb-3">
+                <h2 class="display2 mb-3">Outstanding Assignments:</h2>
+                <% if (user.assignedTasks.length > 0) { %> 
+                    <% for (task of user.assignedTasks) { %> 
+                        <button class="btn cream-fill mb-3">
+                            <a href="/tasks/<%= task._id %>"><%= task.title %></a>
+                        </button>
+                    <% } %>
+                <% } else {%>
+                    <p>No Tasks Available</p>
+                <% } %>
+            </div>
+            <h2 class="mb-3"><label for="task">Assign a Task: </label></h2>
+            <div class="container d-flex justify-content-center mb-3">
+                <select name="task[title]" form="assignTask" style="width: 15rem" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <% for (task of tasks) { %> 
+                        <option value="<%= task.title %>"><%= task.title %></option>
+                    <% } %> 
+                </select>
+            </div>
+            <form class="mb-3" id="assignTask" action="/users/<%= user._id %>?_method=PATCH" method="POST">
+                <button class="btn cream-fill mb-3">Submit</button>
             </form>
-            <form action="/users">
-                <button class="btn yellow-hearth">Back to users</button>
-            </form>
-    </div>
+            <div class="container">
+                    <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+                        <button class="btn cream-fill mb-3">Delete User</button>
+                    </form>
+                    <form action="/users">
+                        <button class="btn yellow-hearth">Back to users</button>
+                    </form>
+            </div>
+        </div>
     </div>
             
         

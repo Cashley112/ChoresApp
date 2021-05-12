@@ -105,14 +105,13 @@ app.delete('/tasks/:id', catchAsync(async (req, res) => {
 
 app.get('/schedule', catchAsync(async (req, res) => {
     const assignments = await User.find({}).populate('assignedTasks');
-    console.log(assignments[0]);
     res.render('schedule', { assignments });
 }));
 
 // Complete task route
 app.patch('/users/:id/tasks/:taskId', catchAsync(async (req, res) => {
     const { id, taskId } = req.params;
-    const updatedTask = await User.findByIdAndUpdate(id, { $pull: { assignedTasks: taskId }, $inc : { choreScore: 1 } });
+    const updatedUser = await User.findByIdAndUpdate(id, { $pull: { assignedTasks: taskId }, $push: { choreHistory: taskId }, $inc : { choreScore: 1 } });
     res.redirect('/schedule')
 }));
 

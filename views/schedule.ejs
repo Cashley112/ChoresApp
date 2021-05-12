@@ -1,26 +1,36 @@
 <% layout('layouts/boilerplate') %> 
+<div class="container mb-3">
     <h1>Current Chore Assignments</h1>
-    
-    
-    
-    <div class="row">
-        <div class="col-6 offset-3">
-            <% for (let assignment of assignments) { %>
-                <p>
-                    <!-- I feel like this is really bad, probably REFACTOR -->
-                    <% if (assignment.assignedTasks.length > 0) { %> 
-                    <h2><%= assignment.username %></h2>
-                    <% for (let i = 0; i < assignment.assignedTasks.length; i++) { %> 
-                        <h3 class="target-acquired"><%= assignment.assignedTasks[i].title %></h3>
-                        <form id="form" action="/users/<%= assignment._id %>/tasks/<%= assignment.assignedTasks[i]._id %>?_method=PATCH" method="POST">
-                            <button class="btn btn-secondary cream-fill">Completed</button>
-                        </form>
+</div>
+<!-- TODO: turn assignments into check boxes with an update button to send the form -->
+<div class="wrapper">
+<table class="table table-responsive text-white">
+    <!-- <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Assignments</th>
+    </thead> -->
+    <tbody>
+        <% for (let assignment of assignments) { %>
+            <tr class="mb-3">
+                <% if (assignment.assignedTasks.length > 0) { %>
+                    <td><%= assignment.username %></td>
+        
+                    <% for (let i = 0; i < assignment.assignedTasks.length; i++) { %>
+                        <td>
+                            <%= assignment.assignedTasks[i].title %>
+                            <form id="form" action="/users/<%= assignment._id %>/tasks/<%= assignment.assignedTasks[i]._id %>?_method=PATCH" method="POST">
+                                <button class="btn btn-secondary cream-fill">Completed</button>
+                            </form>
+                        </td> 
                     <% } %> 
                 <% } %> 
-                </p>
-            <% } %>  
-        </div>
-    </div>
+            </tr>
+        <% } %> 
+    </tbody> 
+</table>
+</div>
+
+        
 
     <!-- <div class="row">
         <div class="col-6 offset-3">
