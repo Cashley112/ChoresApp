@@ -22,11 +22,7 @@ const UserSchema = new Schema({
     assignedTasks: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Task",
-            assignedAt: {
-                type: Date,
-                default: Date.now()
-            }
+            ref: "Task"
         }
     ],
     choreScore: {
@@ -41,5 +37,6 @@ const UserSchema = new Schema({
     ]
 
 })
+
 
 module.exports = mongoose.model('User', UserSchema);

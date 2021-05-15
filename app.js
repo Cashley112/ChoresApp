@@ -7,14 +7,18 @@ const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
 
-const Task = require('./models/tasks');
 const User = require('./models/users');
 const Assignment = require('./models/assignments');
+
+const users = require('./routes/users');
+const tasks = require('./routes/tasks');
+const assignments = require('./routes/assignments');
 
 mongoose.connect('mongodb://localhost:27017/chores-app', {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 const db = mongoose.connection;
@@ -31,109 +35,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+app.use('/users', users);
+app.use('/tasks', tasks);
+app.use('/assignments', assignments);
+
 app.get('/', catchAsync(async (req, res) => {
     const users = await User.find({});
     res.render('home', { users });
 }));
-app.get('/users', async (req, res) => {
-    const users = await User.find({})
-    res.render('User/users', { users });
-})
-app.get('/users/new', (req, res) => {
-    res.render('User/new');
-})
-app.post('/users', async (req, res) => {
-    const user = new User(req.body.user);
-    await user.save();
-    res.redirect('/users')
-})
-app.get('/users/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const tasks = await Task.find({});
-    const user = await User.findById(id).populate('assignedTasks');
-    res.render('User/show', { user, tasks });
-}));
-
-// assign task to user route
-app.patch('/users/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    const task = await Task.findOne(req.body.task);
-    user.assignedTasks.push(task);
-    await user.save();
-    const assignment = new Assignment({
-        username: user,
-        task: task
-    });
-    await assignment.save();
-    console.log(assignment);
-    res.redirect(`/users/${ user._id }`)
-}));
-
-app.delete('/users/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await User.findByIdAndDelete(id);
-    res.redirect('/users')
-}));
-
-app.get('/tasks', catchAsync(async (req, res) => {
-    const tasks = await Task.find({});
-    res.render('Task/tasks', { tasks });
-}));
-app.get('/tasks/new', catchAsync(async (req, res) => {
-    const tasks = await Task.find({});
-    res.render('Task/new', { tasks });
-}));
-app.post('/tasks', catchAsync(async (req, res) => {
-    task = new Task(req.body.task);
-    await task.save();
-    res.redirect(`/tasks/${ task._id }`)
-}));
-app.get('/tasks/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const task = await Task.findById(id);
-    res.render('Task/show', { task })
-}));
-app.get('/tasks/:id/edit', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const tasks = await Task.find({});
-    const task = await Task.findById(id);
-    res.render('Task/edit', { task, tasks });
-}));
-app.put('/tasks/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const task = await Task.findByIdAndUpdate(id, {...req.body.task});
-    res.redirect(`/tasks/${ task._id }`);
-}));
-app.delete('/tasks/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const task = await Task.findByIdAndDelete(id);
-    res.redirect('/tasks');
-}));
-
-app.get('/schedule', catchAsync(async (req, res) => {
-    const assignments = await Assignment.find({}).populate('username').populate('task');
-    const usersArray = [];
-    for (let i = 0; i < assignments.length; i++) {
-        let dict = {};
-        dict['username'] = assignments[i].username[0].username;
-        dict['user_id'] = assignments[i].username[0]._id
-        dict['task'] = assignments[i].task[0].title;
-        dict['task_id'] = assignments[i].task[0]._id;
-        dict['time'] = String(assignments[i].assignedAt);
-        dict['assignment_id'] = assignments[i]._id;
-        usersArray.push(dict);
-    }
-    console.log(usersArray[0]);
-    res.render('schedule', { usersArray });
-}));
 
 // Complete task route
+// must REFACTOR to include only assignmentID in req.params, then populate to include user and task properties
 app.patch('/users/:id/tasks/:taskId/assignments/:assignmentId', catchAsync(async (req, res) => {
     const { id, taskId, assignmentId } = req.params;
     const updatedUser = await User.findByIdAndUpdate(id, { $pull: { assignedTasks: taskId }, $push: { choreHistory: taskId }, $inc : { choreScore: 1 } });
     await Assignment.findByIdAndDelete(assignmentId);
-    res.redirect('/schedule')
+    res.redirect('/assignments')
 }));
 
 app.all('*', (req, res, next) => {
