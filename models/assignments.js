@@ -23,4 +23,20 @@ const AssignmentSchema = new Schema({
     }
 })
 
+AssignmentSchema.static('findMapAndPush', async function () {
+    const assignments = await this.find({}).populate('username').populate('task');
+    const usersArray = [];
+    for (let i = 0; i < assignments.length; i++) {
+        let dict = {};
+        dict['username'] = assignments[i].username[0].username;
+        dict['user_id'] = assignments[i].username[0]._id
+        dict['task'] = assignments[i].task[0].title;
+        dict['task_id'] = assignments[i].task[0]._id;
+        dict['time'] = String(assignments[i].assignedAt);
+        dict['assignment_id'] = assignments[i]._id;
+        usersArray.push(dict);
+    }
+    return usersArray;
+});
+
 module.exports = mongoose.model('Assignment', AssignmentSchema);
